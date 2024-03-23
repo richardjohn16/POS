@@ -68,13 +68,15 @@ function calculateTotal() {
 function pay() {
     var cash = document.getElementById('qwe').value;
     var numericCash = parseFloat(cash);
+    var totalAmount = parseFloat(document.getElementById('totalAmount').innerHTML);
 
-    if (isNaN(numericCash) || numericCash < totalOrderAmount) {
+    if (isNaN(numericCash) || numericCash < totalAmount) {
         alert('Insufficient cash or invalid amount. Please enter the correct amount.');
     } else {
         alert('Payment successful!');
         clearTable();
         totalOrderAmount = 0; // Reset total order amount after payment
+        document.getElementById('totalAmount').innerHTML = "0.00"; // Reset displayed total amount
     }
 }
 
