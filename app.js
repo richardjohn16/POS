@@ -30,6 +30,20 @@ function addToOrder(choice, quantity, price) {
     cell1.innerHTML = choice;
     cell2.innerHTML = quantity;
     cell3.innerHTML = price * quantity; // Calculate total price for this item
+    updateTotal(); // Update the total after adding the item
+}
+
+// Function to update total order amount
+function updateTotal() {
+    var table = document.querySelector('table');
+    var rows = table.rows;
+    var total = 0;
+
+    for (var i = 1; i < rows.length; i++) {
+        total += parseFloat(rows[i].cells[2].innerHTML); // Add up total prices
+    }
+
+    document.getElementById('totalAmount').innerHTML = total.toFixed(2); // Display total amount
 }
 
 // Function to show table section
